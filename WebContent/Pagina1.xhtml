@@ -1,0 +1,108 @@
+<ui:composition template = "Templates/templates.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<ui:define name = "Conteudo">
+	<br/><br/>
+		<h:form id = "formulario2">
+			<p:growl></p:growl>
+		<center><h:panelGrid columns="2" cellpadding="5">
+			<p:outputLabel for = "nome" value ="Nome:" style ="font-family:Berlin Sans FB; font-size: 25px; margin-right: 5px;"/>
+			<p:inputText id="nome" styleClass="form-control"
+					value="#{usuarioBean.usuario.nome}" required="true"
+					requiredMessage="Campo Nome Obrigatório" size="40"
+					aria-describedby="addonNome"/>
+			
+			<p:outputLabel for ="email" value ="Email:" style = "font-family:Berlin Sans FB; font-size: 25px; margin-right: 5px;"/>
+			<p:inputText id = "email" styleClass="form-control"
+					value="#{usuarioBean.usuario.email}" required="true"
+					requiredMessage="Campo email Obrigatório" size="40"
+					aria-describedby="addonNome"/>
+					
+			<p:outputLabel for ="senha" value ="Senha:" style = "font-family:Berlin Sans FB; font-size: 25px; margin-right: 5px;"/>
+			<p:inputText id = "senha" type = "password" styleClass="form-control"
+					value="#{usuarioBean.usuario.senha}" required="true"
+					requiredMessage="Campo senha Obrigatório" size="40"
+					aria-describedby="addonNome"/>
+					
+		<p:outputLabel for="Tdu" value="Tipo de usuário:" style = "font-family:Berlin Sans FB; font-size: 25px; margin-right: 5px;"/>
+       
+           <p:selectOneMenu id="Tdu" value="#{usuarioBean.usuario.tipoUsuario}"
+           required="true" requiredMessage="Campo tdu obrigatório" size="20"
+					aria-describedby="addonNome">
+            <f:selectItem itemLabel="Cliente" itemValue="Cliente" />
+             <f:selectItem itemLabel="Vendedor" itemValue="Vendedor" />
+            
+       	 </p:selectOneMenu>
+       		
+       		<p:outputLabel for="rg" value="RG:" style = "font-family:Berlin Sans FB; font-size: 25px; margin-right: 5px;"/>
+       		<p:inputMask id="rg" value="#{usuarioBean.usuario.rg}" required="true"
+					requiredMessage="Campo Nome rg" size="40"
+					aria-describedby="addonNome" mask="9999999"/>
+       		
+       		<p:outputLabel for="cpf" value="CPF:" style = "font-family:Berlin Sans FB; font-size: 25px; margin-right: 5px;"/>
+       		<p:inputMask id="cpf" value="#{usuarioBean.usuario.cpf}" required="true"
+					requiredMessage="Camp cpf Obrigatório" size="40"
+					aria-describedby="addonNome" mask="99999999999"/>
+       		
+       		<p:outputLabel for="nascimento" value="Data de Nascimento:" style = "font-family:Berlin Sans FB; font-size: 25px; margin-right: 5px;"/>
+        	<p:calendar event="keyup" id="nascimento" value="#{usuarioBean.usuario.nascimento}" required="true"
+					requiredMessage="Campo nascimento obrigatório" size="40"
+					aria-describedby="addonNome"/>
+        	
+        	<p:outputLabel for="sexo" value="Sexo:" style = "font-family:Berlin Sans FB; font-size: 25px; margin-right: 5px;"/>
+        <p:selectOneRadio id="sexo" value="#{usuarioBean.usuario.sexo}"  required="true"
+					requiredMessage="Campo sexo obrigatório" size="20"
+					aria-describedby="addonNome">
+            <f:selectItem itemLabel="Feminino" itemValue="F" />
+            <f:selectItem itemLabel="Masculino" itemValue="M" />
+            <f:selectItem itemLabel="Indefinido" itemValue="I" />
+        </p:selectOneRadio>
+        
+        	<p:commandButton value="#{usuarioBean.usuario.id == 0 ? 'cadastrar' : 'update'}" 
+			    		styleClass="btn btn-primary"
+						action="#{usuarioBean.cadastrar}" ajax="false"/>
+        		
+        	<p:commandButton value ="Excluir" action ="#{usuarioBean.delete}"
+        		style= "border-radius: 15%;">
+        		<f:ajax event= "click" execute = "formulario"/>
+        	</p:commandButton>
+        		
+        	<p:commandButton id="btnListar" value="Listar" style= "border-radius: 15%;" />
+	
+	<p:overlayPanel id="Listar" for="btnListar" hideEffect="fade" dynamic="true" style="width:600px">
+        <p:dataTable var="p" rows="5" paginator="true"
+       		value="#{produtoMBean.listaprodutos}">
+            <p:column headerText="codigo">
+                <h:outputText value="#{p.codigo}" />
+            </p:column>
+ 
+            <p:column headerText="Nome">
+                <h:outputText value="#{p.nome}" />
+            </p:column>
+ 
+            <p:column headerText="validade">
+                <h:outputText value="#{p.validade}" />
+            </p:column>
+             <p:column headerText="Preço">
+                <h:outputText value="#{p.preco}" />
+            </p:column>
+ 
+        </p:dataTable>
+    </p:overlayPanel>
+       	</h:panelGrid></center>
+		</h:form>
+		
+		<h:form id = "login">
+		 	<p:commandButton style= "float: Right;" value="Realizar Login" action ="login">
+		 	<f:ajax event="click" execute= "login" />
+		 	</p:commandButton>
+		
+		</h:form>
+	</ui:define>
+	
+</ui:composition>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Produtos Maria</title>
+	</h:head>
+	
+	<h:body style = "background-color: #FFC0CB;">
+		<div id = "top" style = "background-color: #FFEBCD; font-family: Berlin Sans FB;
+		width: 1600px; height: 100px; text-align: center; font-size: 40px;">
+		
+			<br/>Produtos Maria	
+		</div>
+	
+		<div id= "left" style = "float: left; width: 150px; height: 730px;
+		background-color: #FFC0CB;">
+			<img src = "flor3.jpg" style ="float: left; width: 150px; height: 150px; border-radius:50%;"/>	
+			<img src = "flor3.jpg" style ="float: left; width: 150px; height: 150px; border-radius:50%;"/>	
+			<img src = "flor3.jpg" style ="float: left; width: 150px; height: 150px; border-radius:50%;"/>	
+			<img src = "flor3.jpg" style ="float: left; width: 150px; height: 150px; border-radius:50%;"/>	
+			<img src = "flor3.jpg" style ="float: left; width: 150px; height: 150px; border-radius:50%;"/>	
+		</div>
+		
+		<ui:insert name = "Conteudo">
+			Espaço para Conteudo
+		</ui:insert>
+		
+		<div id ="bot" style = "text-align: center;">
+			<hr/>
+			<p:growl id="msgs" showDetail="true" />
+			<br/>
+			<p:fieldset legend="Vendedoras" toggleable="true" toggleSpeed="500">
+        <p:ajax event="toggle" listener="#{vendedorMBean.handleToggle}" update="msgs" />
+        <h:panelGrid columns="2" cellpadding="5">
+            <p:graphicImage url= "vendedoras.jpg"/>
+            <h:outputText value="A produtos Maria está presente na vinda de seus clientes de várias formas e para ganhar 
+            ainda mais força precisa de vendedores como você! Faça seu cadastro e desfrute de alguns de nossos benecifios.
+            Somente aqui você terá descontos especiais, faça parte de nossa família."></h:outputText>
+        </h:panelGrid>
+    </p:fieldset>
+    <br/>
+    <p:fieldset legend="Produtos" toggleable="true" toggleSpeed="500">
+        <p:ajax event="toggle" listener="#{vendedorMBean.handleToggle}" update="msgs" />
+        <h:panelGrid columns="2" cellpadding="5">
+            <p:graphicImage url= "hidra.jpg"/>
+            <h:outputText value="Somente aqui você terá acesso a vários produtos com diversas formas de pagamento.
+            Além da garantia de qualidade, nossos produtos estão disponiveis em sites, revistas e lojas."></h:outputText>
+        </h:panelGrid>
+    </p:fieldset>
+		</div>
+	</h:body>
+</html>

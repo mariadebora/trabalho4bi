@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Produtos Maria</title>
+	</h:head>
+	
+	<h:body style = "background-color: #FFC0CB;">
+		<div id = "top" style = "background-color:#FFEBCD; font-family: Berlin Sans FB;
+		width: 1600px; height: 100px; text-align: center; font-size: 40px;">
+		
+			<br/>Produtos Maria	
+		</div>
+		<div id= "left" style = "float: left; width: 150px; height: 730px;
+		background-color: #FFC0CB;">
+			<img src = "flor3.jpg" style ="float: left; width: 150px; height: 150px; border-radius:50%;"/>	
+			<img src = "flor3.jpg" style ="float: left; width: 150px; height: 150px; border-radius:50%;"/>	
+			<img src = "flor3.jpg" style ="float: left; width: 150px; height: 150px; border-radius:50%;"/>	
+			<img src = "flor3.jpg" style ="float: left; width: 150px; height: 150px; border-radius:50%;"/>	
+			<img src = "flor3.jpg" style ="float: left; width: 150px; height: 150px; border-radius:50%;"/>	
+		</div>
+		
+		<center><div>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		 <h:form styleClass="form-signin">
+		        <!-- <h2 class="form-signin-heading">Login</h2> -->
+		        
+		        <div class="form-group row">
+			        <label for="inputEmail" class="sr-only" style = "font-family:Berlin Sans FB;font-size: 25px; margin-right: 5px;">Email</label>
+			        <p:inputText value="#{loginMBean.usuario.email}" placeholder="Email" required="true"
+					requiredMessage="Campo email obrigatório" size="20"
+					aria-describedby="addonNome"
+			    			styleClass="form-control"/>
+		        </div>
+		        <br/>
+		        
+		        <div class="form-group row">
+			        <label for="inputPassword" class="sr-only" style = "font-family:Berlin Sans FB; font-size: 25px;">Senha</label>
+			        <p:password value="#{loginMBean.usuario.senha}" placeholder="Senha"
+				    			styleClass="form-control" id="inputPassword" required="true"
+					requiredMessage="Campo senha obrigatório" size="20"
+					aria-describedby="addonNome"/>
+		        </div>
+		        
+		        <div class="form-group row">
+		        <h:form>
+			       <h:commandButton styleClass="btn btn-lg btn-primary btn-block" action="#{loginMBean.autenticar}"
+				            	value="Entrar" style="font-family:Berlin Sans FB; font-size: 18px; background-color: #FA8072; border-radius:15%;"/>
+				 </h:form>
+			    </div>
+	    </h:form>
+	   </div></center>
+	</h:body>
+</html>

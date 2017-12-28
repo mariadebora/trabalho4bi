@@ -1,0 +1,71 @@
+<ui:composition template = "Templates/templates.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<ui:define name = "Conteudo">
+	<br/><br/>
+		<h:form id = "formulario">
+		
+			<center><h:panelGrid columns="2" cellpadding="5">
+				<p:outputLabel for = "nome" value ="Nome:" style ="font-family:Berlin Sans FB; font-size: 25px; margin-right: 5px;"/>
+				<p:inputText id= "nome" value ="#{produtoMBean.produto.nome}" required="true"
+					requiredMessage="Campo nome obrigatório" size="20"
+					aria-describedby="addonNome"/>
+				
+				<p:outputLabel for="preco" value="Preço:" style ="font-family:Berlin Sans FB; font-size: 25px; margin-right: 5px;"/>
+       			<p:inputMask id="preco" value="#{produtoMBean.produto.preco}" mask="9999999" required="true"
+					requiredMessage="Campo preço obrigatório" size="20"
+					aria-describedby="addonNome"/>
+       			
+       			<p:outputLabel for="validade" value="Data de validade:" style ="font-family:Berlin Sans FB; font-size: 25px; margin-right: 5px;"/>
+        		<p:calendar id="validade" value="#{produtoMBean.produto.validade}" required="true"
+					requiredMessage="Campo validade obrigatório" size="20"
+					aria-describedby="addonNome"/>
+					
+				<p:outputLabel for="lote" value="Lote:" style ="font-family:Berlin Sans FB; font-size: 25px; margin-right: 5px;"/>
+        		<p:inputMask id="lote" value="#{produtoMBean.produto.lote}" required="true"
+					requiredMessage="Campo lote obrigatório" size="20"
+					aria-describedby="addonNome"/>
+        		
+        	<p:commandButton value="#{produtoMBean.produto.id == 0 ? 'cadastrar' : 'update'}" 
+			    		styleClass="btn btn-primary"
+						action="#{produtoMBean.cadastrar}" ajax="false" style= "border-radius: 15%;"/>
+        		
+        	<p:commandButton value= "Excluir" action ="#{produtoMBean.delete}"
+        		style= "border-radius: 15%;">
+        		<f:ajax event= "click" execute = "formulario2"/>
+        	</p:commandButton>
+        		
+			<p:commandButton id="btnListar" value="Listar" style= "border-radius: 15%;" />
+	
+	<p:overlayPanel id="Listar" for="btnListar" hideEffect="fade" dynamic="true" style="width:600px">
+        <p:dataTable var="p" rows="5" paginator="true"
+       		value="#{produtoMBean.listaprodutos}">
+            <p:column headerText="codigo">
+                <h:outputText value="#{p.codigo}" />
+            </p:column>
+ 
+            <p:column headerText="Nome">
+                <h:outputText value="#{p.nome}" />
+            </p:column>
+ 
+            <p:column headerText="validade">
+                <h:outputText value="#{p.validade}" />
+            </p:column>
+             <p:column headerText="Preço">
+                <h:outputText value="#{p.preco}" />
+            </p:column>
+ 
+        </p:dataTable>
+    </p:overlayPanel>
+			</h:panelGrid></center>
+			
+		</h:form>
+		
+	</ui:define>
+	
+</ui:composition>
